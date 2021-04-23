@@ -3,17 +3,13 @@ import Vue from 'vue'
 const commerce = Vue.prototype.$commerce
 export const state = () => ({
   products: [],
-  cart: {}
+  cart: {},
 })
 
 // Actions
 export const actions = {
   async nuxtServerInit({ dispatch }) {
-    const products = await dispatch('getProducts')
-
-    if (products) {
-      await dispatch('retrieveCart')
-    }
+    await dispatch('getProducts')
   },
 
   async getProducts({ commit }) {
@@ -32,8 +28,8 @@ export const actions = {
     }
   },
 
-  async addProductToCart({ commit }, { id, count }) {
-    const addProduct = await Vue.prototype.$commerce.cart.add(id, (count += 1))
+  async addProductToCart({ commit }, id, quantity) {
+    const addProduct = await Vue.prototype.$commerce.cart.add(id, quantity)
 
     if (addProduct) {
       commit('setCart', addProduct.cart)
@@ -62,7 +58,7 @@ export const actions = {
     if (update) {
       commit('updateCart', update)
     }
-  }
+  },
 }
 
 // Mutations
@@ -93,7 +89,7 @@ export const mutations = {
 
   updateCart(state, payload) {
     state.cart = payload
-  }
+  },
 }
 
 // Getters
@@ -110,5 +106,5 @@ export const getters = {
     if (state.cart.subtotal) {
       return state.cart.subtotal.formatted
     }
-  }
+  },
 }

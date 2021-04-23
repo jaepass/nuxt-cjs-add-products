@@ -35,18 +35,18 @@ import CommerceItem from '~/components/CommerceItem'
 export default {
   components: {
     Checkout,
-    CommerceItem
+    CommerceItem,
   },
   data: () => ({
-    drawer: false
+    drawer: false,
   }),
   computed: {
     ...mapGetters({
       products: 'products',
       cart: 'cart',
-      subtotal: 'cartSubtotal'
-    })
-  }
+      subtotal: 'cartSubtotal',
+    }),
+  },
 }
 </script>
 

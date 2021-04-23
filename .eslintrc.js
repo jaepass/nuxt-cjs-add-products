@@ -21,6 +21,13 @@ module.exports = {
   rules: {
     'nuxt/no-cjs-in-config': 'off',
     'no-console': 'off',
-    'no-return-await': 'off'
+    'no-return-await': 'off',
+    'vue/comment-directive': 'off',
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      },
+    ],
   }
 }
