@@ -865,7 +865,7 @@
     "@babel/helper-validator-identifier" "^7.12.11"
     to-fast-properties "^2.0.0"
 
-"@chec/commerce.js@^2.0.1":
+"@chec/commerce.js@^2.4.1":
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/@chec/commerce.js/-/commerce.js-2.4.1.tgz#0f7e7e942b1a5aec6468e4360f1d67f03c5d563f"
   integrity sha512-OJkL3GbXocYxLkvC0OsKU9f96K35yVk/cZ6Ik4xBkBe1k+EIkIZ33dpOwK32FuqtNvauQNjb3Ndn4urYWzK2OA==
