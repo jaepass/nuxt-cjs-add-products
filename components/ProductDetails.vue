@@ -24,9 +24,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="black" text @click="closeDialog">
-          Close
-        </v-btn>
+        <v-btn color="black" text @click="closeDialog"> Close </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -38,12 +36,12 @@ export default {
   props: {
     product: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     dialog: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     strippedDesc() {
@@ -52,13 +50,13 @@ export default {
 
       str = str.toString()
       return str.replace(/(<([^>]+)>)/gi, '')
-    }
+    },
   },
   methods: {
     closeDialog() {
       this.$emit('closeDialog')
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -90,23 +90,27 @@ export default {
   props: {
     cart: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     value: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data: () => ({
     disabled: true,
-    subtotal: '0.00'
+    subtotal: '0.00',
   }),
+  mounted() {
+    this.retrieveCart()
+  },
   methods: {
     ...mapActions({
+      retrieveCart: 'retrieveCart',
       removeProduct: 'removeProductFromCart',
-      clearCart: 'clearCart'
-    })
-  }
+      clearCart: 'clearCart',
+    }),
+  },
 }
 </script>
 

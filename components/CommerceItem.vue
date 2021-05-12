@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mb-5" elevation="0" height="375" width="350">
+  <v-card v-if="product" class="mb-5" elevation="0" height="375" width="350">
     <v-hover v-slot:default="{ hover }">
       <v-img :src="product.media.source" aspect-ratio="1" contain>
         <v-overlay
@@ -20,18 +20,18 @@
             Product Details
           </v-btn>
           <v-btn
-            v-if="product.quantity > 0"
+            v-if="!product.inventory.managed"
             block
             class="my-2 mx-1"
             color="green"
             large
-            @click="addToCart"
+            @click="addToCart(product.id, 1)"
           >
             <v-icon class="mr-2" small>mdi-lock</v-icon>
             Add To Cart
           </v-btn>
           <v-btn
-            v-if="product.quantity <= 0"
+            v-if="product.inventory.managed && product.inventory.available <= 0"
             block
             class="my-2 mx-1 accent-1"
             color="red"
@@ -72,7 +72,7 @@ import ProductDetails from './ProductDetails'
 export default {
   name: 'CommerceItem',
   components: {
-    ProductDetails
+    ProductDetails,
   },
   props: {
     product: {
@@ -83,24 +83,24 @@ export default {
         media: null,
         name: '',
         price: null,
-        quantity: null
-      })
-    }
+        quantity: null,
+      }),
+    },
   },
   data: () => ({
-    showDetails: false
+    showDetails: false,
   }),
   methods: {
     ...mapActions({
-      addToCart: 'addProductToCart'
+      addToCart: 'addProductToCart',
     }),
     closeDialog() {
       this.showDetails = false
     },
     showDialog() {
       this.showDetails = true
-    }
-  }
+    },
+  },
 }
 </script>
 
